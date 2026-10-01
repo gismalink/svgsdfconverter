@@ -1,0 +1,17 @@
+{
+  "name": "com.davidshvartsman.svgsdfconverter",
+  "version": "1.0.0",
+  "displayName": "SVG SDF Converter",
+  "description": "Convert SVG artwork to signed distance field textures with a matching runtime shader.",
+  "unity": "2021.3",
+  "author": {
+    "name": "David Shvartsman"
+  },
+  "keywords": [
+    "editor",
+    "svg",
+    "sdf",
+    "shader",
+    "tools"
+  ]
+}
