@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+- Added 128 and 256 raster resolution options.
+
 ## 1.0.1
 
 - Default shape threshold is 0.5 and softness is exactly 0.

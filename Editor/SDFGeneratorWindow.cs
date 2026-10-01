@@ -45,8 +45,8 @@ public class SDFGeneratorWindow : EditorWindow
         EditorGUILayout.Space(8);
         rasterResolution = EditorGUILayout.IntPopup(
             "Raster Resolution", rasterResolution,
-            new[] { "512", "1024", "2048", "4096" },
-            new[] { 512, 1024, 2048, 4096 });
+            new[] { "128", "256", "512", "1024", "2048", "4096" },
+            new[] { 128, 256, 512, 1024, 2048, 4096 });
         paddingPixels = EditorGUILayout.IntSlider(
             "Padding (px)",
             paddingPixels,
