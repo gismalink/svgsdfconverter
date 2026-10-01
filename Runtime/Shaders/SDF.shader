@@ -11,7 +11,7 @@ Shader "SVG SDF/SDF"
 
         _Threshold ("Shape Threshold", Range(0,1)) = 0.5
 
-        _Softness ("Softness", Range(0.0001,0.5)) = 0.02
+        _Softness ("Softness", Range(0,0.5)) = 0
 
         _OutlineWidth ("Outline Width", Range(0,0.5)) = 0
 
@@ -101,6 +101,9 @@ Shader "SVG SDF/SDF"
                 float edge,
                 float softness)
             {
+                if (softness <= 0.0)
+                    return step(edge, distance);
+
                 return smoothstep(
                     edge - softness,
                     edge + softness,
