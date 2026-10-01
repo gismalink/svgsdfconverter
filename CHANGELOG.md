@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3
+
+- Show a resolution-dependent Max Distance suggestion with an Apply button.
+- Explain range tradeoffs and padding requirements.
+
 ## 1.0.2
 
 - Added 128 and 256 raster resolution options.

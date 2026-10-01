@@ -53,6 +53,21 @@ public class SDFGeneratorWindow : EditorWindow
             0,
             Mathf.Max(0, rasterResolution / 4));
         maxDistance = EditorGUILayout.FloatField("Max Distance", maxDistance);
+        float recommendedDistance = Mathf.Max(2f, rasterResolution / 64f);
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField(
+            "Suggested Max Distance", recommendedDistance.ToString("0") + " px");
+        if (GUILayout.Button("Apply", GUILayout.Width(60f)))
+        {
+            maxDistance = recommendedDistance;
+            EditorUtility.SetDirty(this);
+        }
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.HelpBox(
+            "Starting point: resolution / 64 (minimum 2 px). " +
+            "Use a smaller range for fine lines and a larger range for wide outlines. " +
+            "For the full outer range, use padding at least equal to Max Distance.",
+            MessageType.Info);
         int validSvgCount = GetValidSvgCount();
         GUI.enabled = validSvgCount > 0;
         if (GUILayout.Button(

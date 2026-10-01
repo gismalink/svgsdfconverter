@@ -7,7 +7,7 @@ Unity package for converting SVG artwork into SDF textures and rendering it with
 In Unity Package Manager, select **Add package from git URL** and enter:
 
 ```text
-https://github.com/gismalink/svgsdfconverter.git#v1.0.2
+https://github.com/gismalink/svgsdfconverter.git#v1.0.3
 ```
 
 For local development, select **Add package from disk** and choose this package's `package.json`.
