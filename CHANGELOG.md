@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4
+
+- Added Poster-compatible _DisolveAlpha visibility using deterministic screen-space Simple Noise.
+- Default noise scale matches Lit_Env_Midpoly (500); visibility defaults to 1.
+
 ## 1.0.3
 
 - Show a resolution-dependent Max Distance suggestion with an Apply button.
