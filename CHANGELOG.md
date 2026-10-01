@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.5
+
+- Renamed noise helpers and visibility header to generic Dissolve names.
+- Preserved material properties and visibility behavior for compatibility.
+
 ## 1.0.4
 
 - Added Poster-compatible _DisolveAlpha visibility using deterministic screen-space Simple Noise.

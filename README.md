@@ -7,7 +7,7 @@ Unity package for converting SVG artwork into SDF textures and rendering it with
 In Unity Package Manager, select **Add package from git URL** and enter:
 
 ```text
-https://github.com/gismalink/svgsdfconverter.git#v1.0.4
+https://github.com/gismalink/svgsdfconverter.git#v1.0.5
 ```
 
 For local development, select **Add package from disk** and choose this package's `package.json`.
@@ -30,6 +30,6 @@ Keep source SVGs under the project's Assets folder so output files are writable.
 
 Existing script and shader GUIDs are preserved when migrating from ECar.
 
-## Poster visibility
+## Dissolve visibility
 
 `_DisolveAlpha` works with Poster AnimatedDisolveVisibility through MaterialPropertyBlock: 1 is fully visible, 0 is hidden. Screen-space deterministic Simple Noise matches Lit_Env_Midpoly at the default noise scale of 500. Use Dissolve Noise Scale to match other poster materials.

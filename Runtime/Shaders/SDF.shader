@@ -6,7 +6,7 @@ Shader "SVG SDF/SDF"
         [NoScaleOffset]
         _MainTex ("SDF Texture", 2D) = "white" {}
 
-        [Header(Poster Visibility)]
+        [Header(Dissolve Visibility)]
         _DisolveAlpha ("Visibility", Range(0,1)) = 1
         _DisolveNoiseScale ("Dissolve Noise Scale", Float) = 500
 
@@ -120,7 +120,7 @@ Shader "SVG SDF/SDF"
                 );
             }
 
-            float PosterNoiseHash(float2 cell)
+            float DissolveNoiseHash(float2 cell)
             {
                 uint2 value = (uint2)(int2)round(cell);
                 value.y ^= 1103515245U;
@@ -131,24 +131,24 @@ Shader "SVG SDF/SDF"
                 return (value.x >> 8) * (1.0 / 16777215.0);
             }
 
-            float PosterValueNoise(float2 uv)
+            float DissolveValueNoise(float2 uv)
             {
                 float2 cell = floor(uv);
                 float2 weight = frac(uv);
                 weight = weight * weight * (3.0 - 2.0 * weight);
-                float bottom = lerp(PosterNoiseHash(cell),
-                    PosterNoiseHash(cell + float2(1, 0)), weight.x);
-                float top = lerp(PosterNoiseHash(cell + float2(0, 1)),
-                    PosterNoiseHash(cell + float2(1, 1)), weight.x);
+                float bottom = lerp(DissolveNoiseHash(cell),
+                    DissolveNoiseHash(cell + float2(1, 0)), weight.x);
+                float top = lerp(DissolveNoiseHash(cell + float2(0, 1)),
+                    DissolveNoiseHash(cell + float2(1, 1)), weight.x);
                 return lerp(bottom, top, weight.y);
             }
 
-            float PosterSimpleNoise(float2 uv)
+            float DissolveNoise(float2 uv)
             {
                 uv *= _DisolveNoiseScale;
-                return PosterValueNoise(uv) * 0.125
-                    + PosterValueNoise(uv * 0.5) * 0.25
-                    + PosterValueNoise(uv * 0.25) * 0.5;
+                return DissolveValueNoise(uv) * 0.125
+                    + DissolveValueNoise(uv * 0.5) * 0.25
+                    + DissolveValueNoise(uv * 0.25) * 0.5;
             }
 
             fixed4 frag(v2f i) : SV_Target
@@ -158,7 +158,7 @@ Shader "SVG SDF/SDF"
                 if (_DisolveAlpha < 1.0)
                 {
                     float2 screenUV = i.screenPosition.xy / i.screenPosition.w;
-                    clip(_DisolveAlpha - PosterSimpleNoise(screenUV));
+                    clip(_DisolveAlpha - DissolveNoise(screenUV));
                 }
 
                 float sdf =
